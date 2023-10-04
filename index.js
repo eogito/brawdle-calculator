@@ -80,17 +80,33 @@ brawlers[68] = {name: "maisie", rarity: "Chromatic", wall: "No", health: 7200, p
 brawlers[69] = {name: "cordelius", rarity: "Chromatic", wall: "No", health: 6400, projectiles: 2, year: 2023};
 brawlers[70] = {name: "pearl", rarity: "Chromatic", wall: "Yes", health: 8400, projectiles: 6, year: 2023};
 
+var select = document.getElementById("selectNumber");
+var brawler;
+var guesses;
 
-// brawlers.sort((a, b) => {
-//     return a.health - b.health;
-// });
-for (var i = 0; i <= 70; i++) {
-    potential[i] = i;
+for(var i = 0; i < brawlers.length; i++) {
+    var el = document.createElement("option");
+    el.textContent = brawlers[i].name.charAt(0).toUpperCase() + brawlers[i].name.slice(1);
+    select.appendChild(el);
 }
-
-var brawler = brawlers[54];
-console.log(brawler.name);
+function enter() {
+    if (select.selectedIndex == 0) {
+        alert("No brawler selected!");
+        return;
+    }
+    brawler = brawlers[select.selectedIndex - 1];
+    guesses = 1;
+    document.getElementById("f").innerText = "# of guesses: " + guesses;
+    document.getElementById("g").innerText = "";
+    for (var i = 0; i <= 70; i++) {
+        potential[i] = i;
+    }
+}
 function guess() {
+    if (brawler == undefined) {
+        alert("Please select a brawler as your first guess");
+        return;
+    }
     var newl = new Array();
     var wall = document.getElementById("wall").value;
     var health = document.getElementById("health").value;
@@ -538,7 +554,9 @@ function guess() {
     potential = newl;
     console.log(potential);
     console.log(brawler.name);
-    document.getElementById("g").innerText = "you should guess" + brawler.name;
+    guesses++;
+    document.getElementById("f").innerText = "# of guesses:" + guesses;
+    document.getElementById("g").innerText = "you should guess " + brawler.name;
 }
 
 

@@ -3,14 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
     <title>Document</title>
 </head>
 <body>
-    <p>This is unfinished lol. It's pretty badly error trapped. You have to start with "lou" guess. You can only enter "correct", "higher", or "lower".</p>
+    <p>This is unfinished lol. It's pretty badly error trapped. You can only enter "correct", "higher", or "lower".</p>
     <p>Also you have to refresh the site everytime you want to play another game.</p>
     <br>
-    <p id = 'g'>you should guesss lou</p>
+    <h1>Starting guess:</h1>
+    <select id="selectNumber">
+        <option selected disabled hidden>Choose a brawler</option>
+    </select>
+    <button onclick="enter()">New Game</button>
+    <!-- <p id = 'g'>you should guesss lou</p> -->
+    <br>
+    <br>
+    <h1>Results</h1>
+    <p id = 'f'></p>
+    <p id = 'g'></p>
     <br>
     <p>wall break:</p>
     <input id = 'wall'>
@@ -24,6 +34,6 @@
     <p>year:</p>
     <input id = 'year'>
     <br>
-    <button onclick="guess()">Guess</button>
+    <button onclick="guess()">Enter Results</button>
 </body>
 </html>
